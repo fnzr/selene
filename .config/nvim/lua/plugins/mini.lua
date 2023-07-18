@@ -12,7 +12,7 @@ return {
             require('mini.sessions').setup()
             require('mini.splitjoin').setup()
             require('mini.trailspace').setup()
-            require('mini.surround').setup()
+            -- require('mini.surround').setup()
             require('mini.jump').setup()
             require('mini.indentscope').setup()
         end

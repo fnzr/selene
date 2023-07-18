@@ -6,6 +6,7 @@
   "goto-preview": { "branch": "main", "commit": "82ce83ae589be7a59e4ec5cfbbf82d9f5eb8bded" },
   "harpoon": { "branch": "master", "commit": "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc" },
   "lazy.nvim": { "branch": "main", "commit": "14d76aac4bd3ff07c1fca074c210f28f766a931e" },
+  "leap.nvim": { "branch": "main", "commit": "bae0433949ba54eb1df629f6e94b33af5922922f" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "f306adde671281d77cebd635098cc8b8fc8368ee" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "828a538ac8419f586c010996aefa5df6eb7c250b" },
@@ -34,6 +35,8 @@
   "tokyonight.nvim": { "branch": "main", "commit": "1ee11019f8a81dac989ae1db1a013e3d582e2033" },
   "undotree": { "branch": "master", "commit": "0e11ba7325efbbb3f3bebe06213afa3e7ec75131" },
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
+  "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
+  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vscode-js-debug": { "branch": "main", "commit": "16b9a70171b94cfe4aafc49e991f93b87b8ffb77" },
   "which-key.nvim": { "branch": "main", "commit": "366864a6330d011b534fe3c94d47cbcf6a07423e" },
   "yaml-companion.nvim": { "branch": "main", "commit": "4de1e1546abc461f62dee02fcac6a02debd6eb9e" }

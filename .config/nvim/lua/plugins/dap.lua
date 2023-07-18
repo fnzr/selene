@@ -1,5 +1,10 @@
 return {
     {
+        'theHamsta/nvim-dap-virtual-text',
+        'jay-babu/mason-nvim-dap.nvim',
+        'rcarriga/nvim-dap-ui'
+    },
+    {
         'mfussenegger/nvim-dap',
         config = function()
             local dap = require'dap'
@@ -29,8 +34,18 @@ return {
             -- }
             require('mason-nvim-dap').default_setup({}) -- don't forget this!
             require('dap.ext.vscode').load_launchjs()
-
-            require("nvim-dap-virtual-text").setup()
+            require('nvim-dap-virtual-text').setup()
+            local dapui = require('dapui')
+            dapui.setup()
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
             vim.keymap.set('n', '<F5>', require 'dap'.continue)
             vim.keymap.set('n', '<F10>', require 'dap'.step_over)
             vim.keymap.set('n', '<F11>', require 'dap'.step_into)
@@ -39,7 +54,6 @@ return {
 
         end
     },
-    { 'rcarriga/nvim-dap-ui' },
     {
         'folke/neodev.nvim',
         config = function()
@@ -47,9 +61,6 @@ return {
                 library = { plugins = { "nvim-dap-ui" }, types = true }
             })
         end
-    },
-    { 'theHamsta/nvim-dap-virtual-text',
-    'jay-babu/mason-nvim-dap.nvim'
     },
     {
         "microsoft/vscode-js-debug",

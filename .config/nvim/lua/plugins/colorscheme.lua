@@ -17,22 +17,17 @@ return {
             'rose-pine/neovim', name = 'rose-pine',
             config = function()
                 require('rose-pine').setup({
-                    dark_variant = 'moon',
-                    disable_background = true,
-                    groups = { background = '#ffffff'},
+                    variant = 'moon',
                     highlight_groups = {
-                        ColorColumn = { bg = 'rose' },
                         Normal = { bg = 'none' },
                         NormalNC = { bg = 'none'},
-                        CursorLine = { bg = '#16112e'},
                         SignColumn = { bg = 'none', blend = 100 },
+                        ColorColumn = { blend=50 },
                         StatusLine = { fg = "none", bg = "none", blend= 100},
                         StatusLineNC = { fg = "none", bg = "none" },
                     },
                 })
                 vim.cmd('colorscheme rose-pine')
-                -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-                -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
             end
         }
     },
@@ -40,7 +35,7 @@ return {
     -- catppuccin
     {
         "catppuccin/nvim",
-        lazy = true,
+        --lazy = true,
         name = "catppuccin",
         opts = {
             integrations = {
