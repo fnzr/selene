@@ -111,7 +111,6 @@ exec --no-startup-id sleep 10 && scream
 # Desktop notifications
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
-exec --no-startup-id kitty --name scratchpad
 # alternative if you installed aside with XFCE4:
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
@@ -164,154 +163,38 @@ client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
 client.focused_inactive		$mediumgrey	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
-############################################
-# bar settings (input comes from i3blocks) #
-############################################
-
-# Start i3bar to display a workspace bar
-# (plus the system information i3status finds out, if available)
-# bar {
-# 	font pango:Noto Sans Regular 12
-# 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-# 	position bottom
-#  	i3bar_command i3bar --transparency
-# 	output DisplayPort-0
-# # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# # reference: https://i3wm.org/docs/userguide.html#_tray_output
-# #tray_output primary
-# #   tray_padding 0
-#
-# # When strip_workspace_numbers is set to yes,
-# # any workspace that has a name of the form
-# # “[n][:][NAME]” will display only the name.
-# #strip_workspace_numbers yes
-# ##strip_workspace_name no
-#
-# 	colors {
-# 		separator          $purple
-# 		background         $darkgrey
-# 		statusline         $black 
-# #                           border 		        bg		    txt		indicator
-# 		focused_workspace	$mediumgrey	   	    $grey		$black  $purple
-#  		active_workspace	$lightblue      	$mediumgrey	$black  $purple
-#  		inactive_workspace	$darkgrey   		$darkgrey	$black	$purple
-# 		urgent_workspace	$urgentred	    	$urgentred	$white	$purple
-# 	}
-# }
-#
-# # you can add different bars for multidisplay setups on each display:
-# # set output HDMI-0 to the display you want the bar, --transparency can be set.
-# # Transparency needs rgba color codes to be used where the last two letters are the transparency factor see here:
-# # https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
-# # #08052be6 --> e6=90%
-#
-# bar {
-# 	font pango:Noto Sans Regular 12
-#  	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#  	i3bar_command i3bar --transparency
-#  	output HDMI-A-0
-#  	position bottom
-# # #
-# # # When strip_workspace_numbers is set to yes,
-# # # any workspace that has a name of the form
-# # # “[n][:][NAME]” will display only the name.
-# # #strip_workspace_numbers yes
-# # ##strip_workspace_name no
-# # #
-#  	colors {
-#   		separator          $purple
-#   		background         $darkbluetrans
-#  		statusline         $white
-# #					border		bg		txt		indicator
-#   		focused_workspace	$lighterblue	$lighterblue	$darkblue	$purple
-#   		active_workspace	$lightdblue	$lightdblue	$darkblue	$purple
-#   		inactive_workspace	$darkblue	$darkblue	$lightdblue	$purple
-#   		urgent_workspace	$urgentred	$urgentred	$white		$purple
-#   	}
-# }
-
-# # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # # 												# # # # # # 
-# # # # # # 												# # # # # # 
-# # # # # #       KEYBINDINGS				# # # # # # 
-# # # # # # 												# # # # # # 
-# # # # # # 												# # # # # # 
-# # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # # # # # # # # # # # # # # # # # # # # 
-
-# # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # #			     SYSTEM					# # # # # #
-# # # # # # # # # # # # # # # # # # # # # # # # 
-
-bindsym $super+Pause reload
+bindsym $super+Backspace reload
 bindsym $super+Escape  exec ~/.config/i3/scripts/powermenu
  
 # # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # #	    		WINDOWS					# # # # # #
+# # # # # #	    	WINDOWS		# # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # 
 
-bindsym XF86Launch7 kill
-bindsym XF86Launch6 fullscreen
-bindsym XF86Launch5 floating toggle
+bindsym $super+u kill
+bindsym $super+f fullscreen
+bindsym $super+n floating toggle
 bindsym XF86Tools layout toggle tabbed splitv
 
 bindsym $super+p exec --no-startup-id ~/.config/i3/scripts/promote_window
 
-#Home 7
+bindsym $super+y workspace prev_on_output
+bindsym $super+s workspace next_on_output
 
-# bindsym $super+KP_Prior layout toggle tabbed splitv
-# #bindsym KP_Up split toggle
-#
-# bindsym KP_End focus left
-# bindsym KP_Next focus right
-# bindsym KP_Left workspace prev_on_output
-# bindsym KP_Right workspace next_on_output
-# bindsym KP_Begin focus parent
-# bindsym KP_Down focus child
-# bindsym KP_Insert focus output next
-# bindsym $super+space focus output next
-#
-bindsym $super+$up workspace prev_on_output
-bindsym $super+$down workspace next_on_output
+bindsym Shift+$super+y move container to workspace prev_on_output,workspace prev_on_output
+bindsym Shift+$super+s move container to workspace next_on_output,workspace next_on_output
 
-bindsym Shift+$super+$up move container to workspace prev_on_output,workspace prev_on_output
-bindsym Shift+$super+$down move container to workspace next_on_output,workspace next_on_output
+bindsym $super+r focus left
+bindsym $super+t focus right
 
-bindsym $super+$left focus left
-bindsym $super+$right focus right
-
-bindsym Shift+$super+$left move left
-bindsym Shift+$super+$right move right
+bindsym Shift+$super+r move left
+bindsym Shift+$super+t move right
 
 bindsym Shift+$super+space move container to output next
 bindsym $super+space focus output next
 bindsym $super+Return exec ~/.config/i3/scripts/empty_workspace_follow
 
-#bindsym $super+1 focus left
-#bindsym $super+2 focus right
-# bindsym $super+Left focus left
-# bindsym $super+Right focus right
-#bindsym KP_Left workspace prev_on_outpu
-#bindsym KP_Right workspace next_on_output
-# bindsym $super+Up focus parent
-# bindsym $super+Down focus child
-
-bindsym $super+grave [instance="scratchpad"] scratchpad show, move position center
-bindsym Shift+$super+grave move scratchpad
-bindsym Control+$super+grave scratchpad show
-
 bindsym --whole-window $super+button2 kill
 bindsym --release button2 kill
-
-# bindsym $super+KP_End move left
-# bindsym $super+KP_Next move right
-# bindsym $super+KP_Begin move up
-# bindsym $super+KP_Down move down
-# bindsym $super+KP_Left move container to workspace prev_on_output,workspace prev_on_output
-# bindsym $super+KP_Right move container to workspace next_on_output,workspace next_on_output
-# bindsym $super+KP_Insert move container to output next
-# bindsym $super+KP_Delete exec ~/.config/i3/scripts/empty_workspace_follow
 
 mode "resize" {
 	bindsym KP_End resize shrink width 20 px or 20 ppt
@@ -321,6 +204,17 @@ mode "resize" {
 	bindsym KP_Delete mode "default"
 }
 bindsym KP_Delete mode "resize"
+
+# # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # #     SCRATCHPAD      # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # #
+
+exec --no-startup-id kitty --name scratchpad
+
+bindsym $super+d [instance="scratchpad"] scratchpad show
+
+bindsym $super+v [con_mark="alpha"] scratchpad show
+bindsym Shift+$super+v mark "alpha", move scratchpad
 
 # # # # # # # # # # # # # # # # # # # # # # # # 
 # # # # # #		LAUNCHERS	   	# # # # # # # #
@@ -338,27 +232,27 @@ bindsym $super+Tab exec --no-startup-id \
 	rofi -show window -config ~/.config/rofi/rofidmenu.rasi
 
 #bindsym $super+p exec kitty
-bindsym $super+t exec chromium
-bindsym $super+e exec dpass
-bindsym $super+i exec rofi -show ssh -ssh-command \
-	'kitty -- kitty +kitten ssh {host}' -config ~/.config/rofi/rofidmenu.rasi
-bindsym $super+a exec rofi -show run -i -config ~/.config/rofi/rofidmenu.rasi
-bindsym $super+x exec kitty sh -c 'lf ~/Downloads'
-bindsym $super+o exec kitty sh -c 'lf ~/Pictures'
-bindsym $super+u exec kitty sh -c 'lf ~'
-bindsym $super+v exec mpv
-bindcode $super+47 exec kitty sh -c 'lf /mnt'
-bindsym $super+j exec "google-chrome-stable --profile-directory='Profile 2'"
-bindsym $super+d exec "google-chrome-stable"
-bindsym $super+y exec firefox-developer-edition
-bindsym $super+r exec dolphin
+# bindsym $super+t exec chromium
+# bindsym $super+e exec dpass
+# bindsym $super+i exec rofi -show ssh -ssh-command \
+# 	'kitty -- kitty +kitten ssh {host}' -config ~/.config/rofi/rofidmenu.rasi
+# bindsym $super+a exec rofi -show run -i -config ~/.config/rofi/rofidmenu.rasi
+# bindsym $super+x exec kitty sh -c 'lf ~/Downloads'
+# bindsym $super+o exec kitty sh -c 'lf ~/Pictures'
+# bindsym $super+u exec kitty sh -c 'lf ~'
+# bindsym $super+v exec mpv
+# bindcode $super+47 exec kitty sh -c 'lf /mnt'
+# bindsym $super+j exec "google-chrome-stable --profile-directory='Profile 2'"
+# bindsym $super+d exec "google-chrome-stable"
+# bindsym $super+y exec firefox-developer-edition
+# bindsym $super+r exec dolphin
 
-bindsym $super+F1 exec kitty
-bindsym $super+F2 exec chromium
-bindsym $super+F3 exec dol0-phin
-bindsym $super+F4 exec rofi -show ssh -ssh-command \
+bindsym $super+1 exec kitty
+bindsym $super+2 exec chromium
+bindsym $super+3 exec dolphin
+bindsym $super+4 exec rofi -show ssh -ssh-command \
 	'kitty -- kitty +kitten ssh {host}' -config ~/.config/rofi/rofidmenu.rasi
-bindsym $super+F9 exec dpass
+bindsym $super+5 exec dpass
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # 
